@@ -1,3 +1,4 @@
+from tkinter import font
 from tkinter.ttk import *
 import tkinter as tk
 from tkinter import *
@@ -8,8 +9,8 @@ root.geometry("215x280")
 root.resizable(False,False)
 
 #input
-userInput = Entry(root)
-userInput.grid(columnspan=5, row=0, pady=10)
+userInput = Entry(root, justify=RIGHT,state=NORMAL, cursor="arrow", font=("arial 10"))
+userInput.grid(columnspan=5, row=0, pady=10, ipady=15, ipadx=20)
 
 #OPERTATIONS ROW1
 mcb = Button(root, text="MC", height=1, width=3)
