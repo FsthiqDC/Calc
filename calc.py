@@ -11,6 +11,8 @@ def remove_text():
     textLenght = len(userInput.get())
     userInput.delete(textLenght-1, END)
 
+def calc_result():
+    
 
 
 
@@ -21,10 +23,11 @@ root.geometry("175x250")
 root.resizable(False,False)
 
 #text value
-input_value = StringVar()
+finalValue = 0
+help = 0
 
 #input
-userInput = Entry(root, justify=LEFT,state=NORMAL, cursor="arrow", )
+userInput = Entry(root, justify=RIGHT,state=NORMAL, cursor="arrow", )
 userInput.grid(columnspan=5, row=0, pady=10, ipady=15, ipadx=20)
 
 #OPERTATIONS ROW1
@@ -88,20 +91,20 @@ sixb.grid(column=2, row=4, padx=2, pady=2)
 multib = Button(root, text="*", height=1, width=3,)
 multib.grid(column=3, row=4, padx=2, pady=2)
 
-equalb = Button(root, text="=", height=3, width=3)
+equalb = Button(root, text="=", height=3, width=3, command=lambda:calc_result())
 equalb.grid(column=4, row=4, rowspan=2, padx=2, pady=2)
 
 #OPERATION ROW5
-oneb = Button(root, text="1", height=1, width=3, command=lambda:text_input(1))
+oneb = Button(root, text="1", height=1, width=3, command=lambda:text_input('1'))
 oneb.grid(column=0, row=5, padx=2, pady=2)
 
-twob = Button(root, text="2", height=1, width=3,command=lambda:text_input(2))
+twob = Button(root, text="2", height=1, width=3,command=lambda:text_input('2'))
 twob.grid(column=1, row=5, padx=2, pady=2)
 
-threeb = Button(root, text="3", height=1, width=3,command=lambda:text_input(3))
+threeb = Button(root, text="3", height=1, width=3,command=lambda:text_input('3'))
 threeb.grid(column=2, row=5, padx=2, pady=2)
 
-minusb = Button(root, text="-", height=1, width=3)
+minusb = Button(root, text="-", height=1, width=3, command=lambda:text_input('-'))
 minusb.grid(column=3, row=5, padx=2, pady=2)
 
 #OPERATIONS ROW6
