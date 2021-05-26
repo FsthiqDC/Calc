@@ -3,13 +3,28 @@ from tkinter.ttk import *
 import tkinter as tk
 from tkinter import *
 
+def text_input(text):
+    userInput.insert(END, text)
+
+
+def remove_text():
+    textLenght = len(userInput.get())
+    userInput.delete(textLenght-1, END)
+
+
+
+
+
 root = tk.Tk()
 root.title("Calculator")
-root.geometry("215x280")
+root.geometry("175x250")
 root.resizable(False,False)
 
+#text value
+input_value = StringVar()
+
 #input
-userInput = Entry(root, justify=RIGHT,state=NORMAL, cursor="arrow", font=("arial 10"))
+userInput = Entry(root, justify=LEFT,state=NORMAL, cursor="arrow", )
 userInput.grid(columnspan=5, row=0, pady=10, ipady=15, ipadx=20)
 
 #OPERTATIONS ROW1
@@ -29,7 +44,7 @@ mminusb = Button(root, text="M-", height=1, width=3)
 mminusb.grid(column=4, row=1, padx=2, pady=2)
 
 #OPERATIONS ROW2
-removeb = Button(root, text="←", height=1, width=3)
+removeb = Button(root, text="←", height=1, width=3, command=lambda:remove_text())
 removeb.grid(column=0, row=2, padx=2, pady=2)
 
 ceb = Button(root, text="CE", height=1, width=3)
@@ -70,20 +85,20 @@ fiveb.grid(column=1, row=4, padx=2, pady=2)
 sixb = Button(root, text="6", height=1, width=3)
 sixb.grid(column=2, row=4, padx=2, pady=2)
 
-multib = Button(root, text="*", height=1, width=3)
+multib = Button(root, text="*", height=1, width=3,)
 multib.grid(column=3, row=4, padx=2, pady=2)
 
 equalb = Button(root, text="=", height=3, width=3)
 equalb.grid(column=4, row=4, rowspan=2, padx=2, pady=2)
 
 #OPERATION ROW5
-oneb = Button(root, text="1", height=1, width=3)
+oneb = Button(root, text="1", height=1, width=3, command=lambda:text_input(1))
 oneb.grid(column=0, row=5, padx=2, pady=2)
 
-twob = Button(root, text="2", height=1, width=3)
+twob = Button(root, text="2", height=1, width=3,command=lambda:text_input(2))
 twob.grid(column=1, row=5, padx=2, pady=2)
 
-threeb = Button(root, text="3", height=1, width=3)
+threeb = Button(root, text="3", height=1, width=3,command=lambda:text_input(3))
 threeb.grid(column=2, row=5, padx=2, pady=2)
 
 minusb = Button(root, text="-", height=1, width=3)
