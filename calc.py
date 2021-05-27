@@ -3,22 +3,29 @@ from tkinter.ttk import *
 import tkinter as tk
 from tkinter import *
 
-def text_input(text):
+def text_input(text): #inputs character which was clicked by user
     userInput.insert(END, text)
 
+def function_input(oper):
+    help = len(userInput.get())
+    last_char = userInput.get()
 
-def remove_text():
+    if(oper != last_char[help-1]):
+        userInput.insert(END, oper)
+
+
+def remove_text(): #removing last char of input text
     textLenght = len(userInput.get())
     userInput.delete(textLenght-1, END)
 
-def calc_result():
-    
+def calc_result(): #result function
+    x=2
 
 
 
 
 root = tk.Tk()
-root.title("Calculator")
+root.title("Calc")
 root.geometry("175x250")
 root.resizable(False,False)
 
@@ -104,7 +111,7 @@ twob.grid(column=1, row=5, padx=2, pady=2)
 threeb = Button(root, text="3", height=1, width=3,command=lambda:text_input('3'))
 threeb.grid(column=2, row=5, padx=2, pady=2)
 
-minusb = Button(root, text="-", height=1, width=3, command=lambda:text_input('-'))
+minusb = Button(root, text="-", height=1, width=3, command=lambda:function_input('-'))
 minusb.grid(column=3, row=5, padx=2, pady=2)
 
 #OPERATIONS ROW6
