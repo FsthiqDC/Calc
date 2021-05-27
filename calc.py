@@ -7,7 +7,7 @@ symbols = [
 
 def creating_window():
     root = Tk()
-    root.geometry("276x280")
+    root.geometry("276x320")
     root.title("Calucator")
     root.resizable(False,False)
 
@@ -16,7 +16,7 @@ def creating_window():
 def creating_buttons(root):
     buttons = [Button(root, text=symbol, bg="#5b94d9", borderwidth=0, width=4, height=2) for symbol in symbols]
 
-    j=1
+    j=2
     for i in range(22):
         if i % 6 == 0:
             j+=1
@@ -27,10 +27,20 @@ def creating_buttons(root):
 
     return buttons
 
+def user_input(root, buttons):
+    input_box = Entry(root, borderwidth=0, background="#ffffff")
+    input_box.grid(row=2, columnspan=6, ipadx=76, ipady=25)
+
+    result_box = Label(root, background="#ffffff")
+    result_box.grid(row=1, columnspan=6, ipadx=134, ipady=30)
+
+
+
 
 if __name__ == "__main__":
 
     root = creating_window()
     buttons = creating_buttons(root)
+    text_box = user_input(root, buttons)
 
     root.mainloop()
