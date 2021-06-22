@@ -6,11 +6,11 @@ from ctypes import *
 final_answer = 0
 
 symbols = [
-    "7","8","9","/","\u21BA","C","4","5","6","*","(",")","1","2","3","-","^2","\u221A","0", ",","%","+"
+    "7","8","9","/","\u21BA","C","4","5","6","*","(",")","1","2","3","-","x^2","\u221A","0", ",","%","+"
     ]
 
 operators = [
-    "+", "*", "(", ")", "/", "%", ",", "-"
+    "+", "*", "/", "%", ",", "-"
 ]
 
 def creating_window():
@@ -21,6 +21,7 @@ def creating_window():
 
     return root
 
+
 def button_click(symbol, input):
     def f():
         if symbol == "\u21BA":
@@ -29,6 +30,8 @@ def button_click(symbol, input):
 
         elif symbol == "C":
             input.delete(0, END)
+        elif symbol == "x^2":
+            input.insert(END, "**")
 
         else:
             help = len(input.get())
@@ -37,18 +40,18 @@ def button_click(symbol, input):
             if symbol in operators:
                 if symbol != last_char[help-1]:
                     input.insert(END, symbol)
-                    current_value = result.cget("text")
-                    add_value = input.get()
-                    new_value = current_value + add_value
-                    result.config(text=new_value)
-                    input.delete(0, END)
             else:
                 input.insert(END, symbol)
 
     return f
 
-def show_result(input, entry):
-    x=2
+def show_result(input, result):
+    def a():
+        total = str(eval(input.get()))
+        result.config(text = total)
+        input.delete(0, END)
+        total = 0
+    return a
 
 
 
@@ -62,8 +65,9 @@ def creating_buttons(root):
         buttons[i].grid(row=j, column=i%6,ipady=3, ipadx=6)
         buttons[i].configure(command=button_click(symbols[i], input))
 
-    special = Button(root, text="=", bg="#228f82",borderwidth=0, width=10, height=2, command=show_result(result, input))
+    special = Button(root, text="=", bg="#228f82",borderwidth=0, width=10, height=2)
     special.grid(row = j, column=4, columnspan=2, ipady=3, ipadx=8)
+    special.configure(command=show_result(input, result))
 
     return buttons
 
