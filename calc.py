@@ -3,14 +3,12 @@ import tkinter as tk
 from tkinter import *
 from ctypes import *
 
-final_answer = 0
-
 symbols = [
     "7","8","9","/","\u21BA","C","4","5","6","*","(",")","1","2","3","-","x^2","\u221A","0", ",","%","+"
     ]
 
 operators = [
-    "+", "*", "/", "%", ",", "-"
+    "+", "*", "/", "%", ",", "x^2"
 ]
 
 def creating_window():
@@ -75,11 +73,10 @@ def  creating_input(root):
     result_box = Label(root, text="", anchor="w")
     result_box.grid(row = 0, columnspan=6, ipady=28)
 
-    input_box = Entry(root)
+    input_box = Entry(root, state="normal")
     input_box.grid(row = 1, columnspan=6, ipadx=75, ipady=28)
 
     return result_box, input_box
-
 
 
 if __name__ == "__main__":
